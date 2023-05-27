@@ -7,15 +7,17 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors({ origin: "https://kevink856.github.io" }));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.next();
+});
 
 // Load the /posts routes
 app.use("/top", top);
-
-// Global error handling
-app.use((err, _req, res, next) => {
-  res.status(500).send("Uh oh! An unexpected error occured.")
-})
 
 module.exports = app;

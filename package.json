@@ -1,0 +1,21 @@
+{
+  "name": "communifyy",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-serverless-express": "^3.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "mongodb": "^5.5.0"
+  },
+  "devDependencies": {
+    "claudia": "^5.14.1"
+  },
+  "scripts": {
+    "dev": "claudia create --version dev --region us-west-1 --deploy-proxy-api --handler lambda.handler",
+    "prod": "claudia set-version --version production",
+    "update": "claudia update"
+  }
+}

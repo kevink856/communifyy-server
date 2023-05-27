@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "communifyy-executor",
+    "name": "communifyy",
+    "region": "us-west-1"
+  },
+  "api": {
+    "id": "oapwx6uio3"
+  }
+}

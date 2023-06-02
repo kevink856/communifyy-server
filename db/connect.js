@@ -9,7 +9,7 @@ let conn, db;
 async function run() {
     try {
         conn = await client.connect();
-        db = conn.db("communify");
+        db = conn.db("communifyy");
     } catch(e) {
         console.error(e);
     }

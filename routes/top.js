@@ -13,10 +13,14 @@ router.get("/", async (req, res) => {
 // Add a new user's top songs / artists data to the collection
 router.post("/", async (req, res) => {
     await client.connect();
-    let db = client.db("communifyy");
-    let collection = db.collection("top");
-    let newDocument = req.body;
-    let result = collection.insertOne(newDocument);
+    const db = client.db("communifyy");
+    const collection = db.collection("top");
+
+    // Upsert top data
+    const updateDocument = { $set: req.body, };
+    const options = { upsert: true };
+    const result = collection.updateOne({}, updateDocument, options);
+
     res.send(result).status(204);
 });
 

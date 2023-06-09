@@ -17,9 +17,10 @@ router.post("/", async (req, res) => {
     const collection = db.collection("top");
 
     // Upsert top data
+    const query = { _id: req.body._id };
     const updateDocument = { $set: req.body, };
     const options = { upsert: true };
-    const result = collection.updateOne({}, updateDocument, options);
+    const result = collection.updateOne(query, updateDocument, options);
 
     res.send(result).status(204);
 });
